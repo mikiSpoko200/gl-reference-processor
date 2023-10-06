@@ -1,0 +1,55 @@
+{
+  "lines": [
+    {
+      "line": "Synchronization",
+      "type": "section-name"
+    },
+    {
+      "line": "Timer queries track the amount of tme needed to fully complete a set of GL commands.",
+      "type": "section-description"
+    },
+    {
+      "line": "Vertex Arrays",
+      "type": "section-name"
+    },
+    {
+      "line": "All states related to definition of data used by vertex processor is in a vertex array object.",
+      "type": "section-description",
+      "section-name": "Vertex Array Objects"
+    },
+    {
+      "line": "Use to antialias points, and lines.",
+      "type": "section-description",
+      "section-name": "Multisampling"
+    },
+    {
+      "line": "Vertex shaders operate on array of 4-component items numbered from slot 0 to MAX_VERTEX_ATTRIBS - 1.",
+      "type": "section-description",
+      "section-name": "Vertex Attributes"
+    },
+    {
+      "line": "Uniform Buffer Object Bindings",
+      "type": "section-name"
+    },
+    {
+      "line": "Shaders and Programs",
+      "type": "section-name"
+    },
+    {
+      "line": "Uniform Buffer Object Bindings",
+      "type": "section-name"
+    },
+    {
+      "line": "Textures and Samplers (cont.)",
+      "type": "section-name"
+    },
+    {
+      "line": "Per-Fragment Operations",
+      "type": "section-name"
+    },
+    {
+      "line": "Vertex Arrays (cont.)",
+      "type": "section-name"
+    }
+  ]
+}
