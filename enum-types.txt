@@ -1,0 +1,54 @@
+Params = Param ["," Param] ":" Enum ["," Enum]
+
+Enum = "[Table" Number "]"
+     | "[Tables" Number {"," Number} "]"
+     | SeeDecl # Ignore rest of variant (until next ",")
+     | "Bitwise" formula
+     | "or" formula
+     | Variant  # All [A-Z_]
+     | Other Eg: ("must be 0",
+     | # like "pg" Number (rest) this card
+     | "LOD level"
+
+OpeningSeparator = "{" | "["
+ClosingSeparator = "}" | "]"
+
+SectionDef = "[" SectionRef "," SectionRef "]"
+
+SectionRef = Number ["." (Number "-" Number | Number)]
+
+MultiIndent = ident [OpeningSeparator {ident} ClosingSeparator [ident]] # eg. SamplerParameter{if}
+
+Recipy = ident " "
+
+SeeDecl = SeeDelegation
+        | SeeParamDelegation
+"See" MultiIndent ["for" MultiIndent ["in" Recipy]] # Fallback otherwise # Fallback case: See Drawing Commands [10.4] above
+
+SeeDelegation = "See" MultiIndent
+SeeParamDelegation = "See" MultiIndent "for" MultiIndent
+
+TableDelegation = "[Table" SectionRef "]"
+
+Todo:
+- ACTIVE_SUBROUTINE_X where X may be UNIFORMS,
+- texture: TEXTUREi (where i is [0, max(MAX_TEXTURE_COORDS, MAX_COMBINED_TEXTURE_IMAGE_UNITS)-1])
+- pname: for all SamplerParameter* functons: TEXTURE_X where X may be WRAP_{S, T, R}, {MIN, MAG}_FILTER, {MIN, MAX}_LOD,BORDER_COLOR, LOD_BIAS, MAX_ANISOTROPY COMPARE_{MODE, FUNC} [Table 23.18]
+- A COMPRESSED_ format from [Table 8.14]
+- May be one of the COMPRESSED_ formats from [Table 8.14]
+- any of the sized internal color, depth, and stencil formats in [Tables 8.18-20]
+- See TexImage1D, omitng compressed rectangular texture formats
+- See internalformat for CompressedTexImage3D
+- TEXTURE _*, where * may be WIDTH, HEIGHT, DEPTH, FIXED_SAMPLE_LOCATIONS, INTERNAL_FORMAT, SHARED_SIZE, COMPRESSED, COMPRESSED_IMAGE_SIZE, SAMPLES, BUFFER_{OFFSET, SIZE}, or X_{SIZE, TYPE} where X can be RED, GREEN, BLUE, ALPHA, DEPTH
+- level: LOD level
+- RENDERBUFFER if renderbufer is non-zero, else undefned
+- See Drawing Commands [10.4] above
+- DEPTH_CLAMP, CLIP_DISTANCEi where i = [0..MAX_CLIP_DISTANCES - 1]
+- The fade threshold if pname is POINT_FADE_THRESHOLD_SIZE; {LOWER, UPPER}_LEFT if pname is POINT_SPRITE_COORD_ORIGIN
+- index: [0, MAX_VERTEX_ATTRIBS - 1]
+- 0 or the OR of
+
+Preprocessor
+- Remove "," before every: "or", "plus"
+- Remove every "The" before "Bitwise"
+- split {1234} into {1 2 3 4} -- \{\d?23\d?}
